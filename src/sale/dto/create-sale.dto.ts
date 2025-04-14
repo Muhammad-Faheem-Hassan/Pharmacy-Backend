@@ -16,13 +16,17 @@ class ItemDto {
   price: number;
 }
 
-export class CreatePurchaseDto {
-  
+export class CreateSaleDto {
+
+  @IsString()
   @IsNotEmpty()
-  supplierId: Types.ObjectId;
+  customer: string;
 
   @IsDateString()
   date: string;
+
+  @IsString()
+  type: 'SALE' | 'RETURN';
 
   @IsArray()
   @ValidateNested({ each: true })

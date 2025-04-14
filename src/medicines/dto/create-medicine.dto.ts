@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Min } from 'class-validator';
 
 export class CreateMedicineDto {
     @IsString()
@@ -13,15 +13,15 @@ export class CreateMedicineDto {
     @IsNotEmpty()
     expiryDate: Date;
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
     quantity: number;
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
     purchasePrice: number;
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
     salePrice: number;
 }

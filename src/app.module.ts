@@ -12,6 +12,8 @@ import configuration from './env';
 import { SettingModule } from "./setting/setting.module";
 import { PurchaseModule } from './purchase/purchase.module';
 import { MedicinesModule } from './medicines/medicines.module';
+import { SupplierModule } from './supplier/supplier.module';
+import { SaleModule } from './sale/sale.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,6 +38,8 @@ import { MedicinesModule } from './medicines/medicines.module';
     SharedModule,
     PurchaseModule,
     MedicinesModule,
+    SupplierModule,
+    SaleModule,
   ],
   providers: [
     {

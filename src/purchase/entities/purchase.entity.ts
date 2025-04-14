@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 export type PurchaseDocument = Purchase & Document;
 
 @Schema()
 export class Item {
-  @Prop({ required: true })
-  medicine: string;
+  @Prop({ type: Types.ObjectId, ref: 'Medicine', required: true })
+  medicine: Types.ObjectId;
 
   @Prop({ required: true })
   quantity: number;
@@ -19,8 +19,8 @@ const ItemSchema = SchemaFactory.createForClass(Item);
 
 @Schema({ timestamps: true })
 export class Purchase {
-  @Prop({ required: true })
-  supplierName: string;
+  @Prop({ type: Types.ObjectId, ref: 'Supplier', required: true })
+  supplierId: Types.ObjectId;
 
   @Prop({ required: true })
   date: string;

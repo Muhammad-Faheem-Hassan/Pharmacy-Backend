@@ -2,16 +2,19 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PurchaseService } from './purchase.service';
 import { CreatePurchaseDto } from './dto/create-purchase.dto';
 import { UpdatePurchaseDto } from './dto/update-purchase.dto';
+import { Public } from 'src/auth/guards/roles.guard';
 
 @Controller('purchase')
 export class PurchaseController {
   constructor(private readonly purchaseService: PurchaseService) {}
 
+  @Public()
   @Post()
   create(@Body() createPurchaseDto: CreatePurchaseDto) {
     return this.purchaseService.create(createPurchaseDto);
   }
 
+  @Public()
   @Get()
   findAll() {
     return this.purchaseService.findAll();

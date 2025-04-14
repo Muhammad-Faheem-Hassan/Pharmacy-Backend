@@ -22,12 +22,12 @@ export class MedicinesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.medicinesService.findOne(+id);
+    return this.medicinesService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMedicineDto: UpdateMedicineDto) {
-    return this.medicinesService.update(+id, updateMedicineDto);
+    return this.medicinesService.update(id, updateMedicineDto);
   }
 
   @Delete(':id')
