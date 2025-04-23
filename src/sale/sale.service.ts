@@ -43,9 +43,21 @@ export class SaleService {
 
   async findAll(getDto: GetSaleDto) {
     const limit = Number(getDto.l) || 10;
-    const skip = Number(getDto.s) || 0;
+    const skip = Number(getDto.o) || 0;
 
     const match: any = {};
+
+    if (getDto.startDate) {
+      match.createdAt = { ...(match.createdAt || {}), $gte: new Date(getDto.startDate) };
+    }
+  
+    if (getDto.endDate) {
+      match.createdAt = { ...(match.createdAt || {}), $lte: new Date(getDto.endDate) };
+    }
+  
+    if (getDto.type) {
+      match.type = getDto.type;
+    }
 
 
     const dataPromise = this.saleModel.aggregate([

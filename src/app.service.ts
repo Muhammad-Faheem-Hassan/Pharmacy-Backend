@@ -110,7 +110,7 @@ export class AppService implements OnApplicationBootstrap {
       ];
       await this.settingService.createMany(settings);
 
-      // GEO LOCATIONS INSERTION BELOW
+      // GEO LOCATIONS INSERTION BELOW 
       let countriesJson = [];
       if (!fs.existsSync("./src/shared/seeds/countries.json")) {
         return false;

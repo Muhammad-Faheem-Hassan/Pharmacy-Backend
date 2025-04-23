@@ -5,7 +5,7 @@ export class GetSaleDto extends GetApiDto {
 
   @IsOptional()
   @IsString()
-  companyId: string;
+  type: string;
 
   @IsOptional()
   @IsString()
