@@ -13,6 +13,9 @@ export class Item {
 
   @Prop({ required: true })
   price: number;
+
+  @Prop({ required: false })
+  salePrice: number;
 }
 
 const ItemSchema = SchemaFactory.createForClass(Item);
@@ -24,6 +27,9 @@ export class Purchase {
 
   @Prop({ required: true })
   date: string;
+
+  @Prop({ type: String, enum: ['PURCHASE', 'RETURN'], default: 'PURCHASE' })
+  type: 'SALE' | 'RETURN';
 
   @Prop({ type: [ItemSchema], required: true })
   items: Item[];

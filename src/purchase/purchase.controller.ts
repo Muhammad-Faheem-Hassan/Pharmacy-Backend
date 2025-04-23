@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { PurchaseService } from './purchase.service';
 import { CreatePurchaseDto } from './dto/create-purchase.dto';
 import { UpdatePurchaseDto } from './dto/update-purchase.dto';
 import { Public } from 'src/auth/guards/roles.guard';
+import { GetPurchaseDto } from './dto/get-purchase.dto';
 
 @Controller('purchase')
 export class PurchaseController {
@@ -16,13 +17,14 @@ export class PurchaseController {
 
   @Public()
   @Get()
-  findAll() {
-    return this.purchaseService.findAll();
+  findAll(@Query() getDto: GetPurchaseDto) {
+    return this.purchaseService.findAll(getDto);
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.purchaseService.findOne(+id);
+    return this.purchaseService.findOne(id);
   }
 
   @Patch(':id')

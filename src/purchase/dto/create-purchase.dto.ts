@@ -14,6 +14,9 @@ class ItemDto {
   @IsNumber()
   @Min(0)
   price: number;
+
+  @IsNumber()
+  salePrice?: number;
 }
 
 export class CreatePurchaseDto {
@@ -23,6 +26,9 @@ export class CreatePurchaseDto {
 
   @IsDateString()
   date: string;
+
+  @IsString()
+  type: 'PURCHASE' | 'RETURN';
 
   @IsArray()
   @ValidateNested({ each: true })
