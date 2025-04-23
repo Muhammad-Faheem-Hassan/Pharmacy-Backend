@@ -110,7 +110,7 @@ export class PurchaseService {
         },
       },
       { $project: { supplierInfo: 0 } },
-      { $sort: { createdAt: 1 } },
+      { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit }
     );

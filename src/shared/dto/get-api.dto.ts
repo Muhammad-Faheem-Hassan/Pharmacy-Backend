@@ -12,7 +12,7 @@ export class GetApiDto {
   sd: string;
 
   @IsOptional()
-  l: number = 20;
+  l: number = 20900000;
 
   @IsOptional()
   o: number = 0;
